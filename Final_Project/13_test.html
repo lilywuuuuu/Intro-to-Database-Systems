@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>My HTML File</title>
+  </head>
+  <body>
+    <h1>Welcome to my HTML file!</h1>
+    <p>Please select an option from the list:</p>
+    <select>
+      <option value="Option 1">Option 1</option>
+      <option value="Option 2">Option 2</option>
+      <option value="Option 3">Option 3</option>
+    </select>
+    <button onclick="runPythonFunction()">Click me!</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skulpt/0.10.2/skulpt.min.js"></script>
+    
+    <script>
+      function runPythonFunction() {
+        Sk.importMainWithBody("<stdin>", false, `
+          # This is the Python function that will be run when the button is clicked
+          def main():
+            print("Hello, World!")
+          main()
+        `)
+      }
+    </script>
+
+  </body>
+</html>

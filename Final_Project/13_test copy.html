@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>My HTML File</title>
+  </head>
+  <body>
+    <h1>Welcome to my HTML file!</h1>
+    <p>Enter a number in the textbox and click the button to run the Python function:</p>
+    <input type="text" id="inputNumber">
+    <button onclick="runPythonFunction()">Click me!</button>
+    <br>
+    <p>Output:</p>
+    <input type="text" id="output">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skulpt/0.10.2/skulpt.min.js"></script>
+    <script>
+      function runPythonFunction() {
+        let inputNumber = document.getElementById("inputNumber").value
+        Sk.importMainWithBody("<stdin>", false, `
+          # This is the Python function that will be run when the button is clicked
+          def main():
+            print("The square of the number is:", int(inputNumber) ** 2)
+          main()
+        `, function(output) {
+          document.getElementById("output").value = output
+        })
+      }
+    </script>
+  </body>
+</html>
